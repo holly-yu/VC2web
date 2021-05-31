@@ -23,16 +23,14 @@ const json = require('../dataset/corr_data_cc1.json');
     let scale = d3.scaleLinear()
       .domain([0,max])
       .range([0,1])
-    dis_row.map(value => return scale(value));
+    dis_row.map(function(value) {
+      return scale(value);
+    });
+    console.log(dis_row);
   }
 
-  // console.log(matched_count);
+  
 // }
-
-var scale = d3.scaleLinear()
-  .domain([0,1])
-  .range([0,10])
-console.log(scale(0.3))
 
 
 function draw() {
@@ -61,4 +59,6 @@ function draw() {
   
 }
 
-// draw()
+// draw();
+
+
