@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-const json = require('../dataset/corr_data_cc1.json');
+const json = require('../dataset/corr_data_cc2.json');
 
 
 let matched_count = json.matched_count;
@@ -11,7 +11,7 @@ function process(json) {
     let max = d3.max(matched_count[i]);
     let scale = d3.scaleLinear()
       .domain([0,max])
-      .range([0,29])
+      .range([0,28])
       matched_count[i] = matched_count[i].map(value => scale(value));
     console.log(matched_count[i])
   }
@@ -20,7 +20,7 @@ function process(json) {
     let max = d3.max(matched_dis[i]);
     console.log(max)
     let scale = d3.scaleLinear()
-      .domain([0,max])
+      .domain([0,3000])
       .range([0,1])
     matched_dis[i] = matched_dis[i].map(value => scale(value));
 
@@ -40,8 +40,8 @@ function draw() {
   // 大矩形边长
   const rectHeight = 30;
   
-  const width = (rectHeight + 2) * car_list.length + margin.left;
-  const height = (rectHeight + 2) * cc_num.length + margin.bottom;
+  const width = (rectHeight + 4) * car_list.length + margin.left;
+  const height = (rectHeight + 4) * cc_num.length + margin.bottom;
   // 比例尺
   const x = d3.scaleBand()
     .domain(car_list)
@@ -78,31 +78,6 @@ function draw() {
     
 
   // 画图
-  
-  // let rectgroup = svg.append('g')
-  //                 .selectAll('g')
-  //                 .data(matched_count)
-  //                 .join('g')
-  //                 .attr('class','rectgroup');
-  
-  // rectgroup.each(function(d,i) {
-  //     // 添加大矩形
-  //     d3.select(this)
-  //     .append('g')
-  //     .selectAll('rect')
-  //     .data(d,j)
-  //     .join('rect')
-  //     .attr('width',rectHeight)
-  //     .attr('height',rectHeight)
-  //     .attr('x', x(car_list[j] ))
-  //     .attr('y', y( cc_num[i]))
-  //     .attr('fill','white')
-  //     .attr('stroke','black')
-  //     .attr('stroke-width','1px')
-    
-
-  // })
-  
   for (const i in matched_count) {
 
     let car = svg.append('g')
