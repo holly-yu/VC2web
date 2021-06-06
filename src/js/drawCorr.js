@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-const json = require('../dataset/corr_data_loy.json');
+const json = require('../dataset/corr_data_loy_sorted.json');
 
 
 let matched_count = json.matched_count;
