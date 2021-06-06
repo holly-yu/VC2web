@@ -19,7 +19,7 @@ function process(json) {
     let max = d3.max(matched_dis[i]);
     let scale = d3.scaleLinear()
       // .domain([0,3000])
-      .domain([0,500])
+      .domain([0,1500])
       .range([0,1])
     matched_dis[i] = matched_dis[i].map(value => scale(value));
 
