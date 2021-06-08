@@ -1,14 +1,19 @@
 import * as d3 from 'd3'
-const json = require('../dataset/corr_data_loy_800.json');
+const json = require('../dataset/corr_data_loy_sorted_1500.json');
 
 
 let matched_count = json.matched_count;
 let matched_dis = json.matched_dis;
 function process(json) {
   
-  
+  let maxlist = []
   for (const i in matched_count) {
-    let max = d3.max(matched_count[i]);
+    maxlist.push(d3.max(matched_count[i]));
+  }
+
+  let max = d3.max(maxlist);
+
+  for (const i in matched_count) {
     let scale = d3.scaleLinear()
       .domain([0,max])
       .range([0,28])
@@ -16,10 +21,10 @@ function process(json) {
   }
 
   for (const i in matched_dis) {
-    let max = d3.max(matched_dis[i]);
+    
     let scale = d3.scaleLinear()
       // .domain([0,3000])
-      .domain([0,800])
+      .domain([0,1500])
       .range([0,1])
     matched_dis[i] = matched_dis[i].map(value => scale(value));
 
